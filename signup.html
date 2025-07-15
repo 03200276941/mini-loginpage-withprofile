@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
+        <h1 class="text-2xl font-bold text-center mb-6">Complete Your Registration</h1>
+        <form id="signupForm" class="space-y-4">
+            <div id="signupError" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"></div>
+            
+            <!-- Personal Information -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="signupName" class="block text-sm font-medium text-gray-700">Full Name*</label>
+                    <input type="text" id="signupName" required 
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <div>
+                    <label for="signupFatherName" class="block text-sm font-medium text-gray-700">Father's Name</label>
+                    <input type="text" id="signupFatherName" 
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="signupEmail" class="block text-sm font-medium text-gray-700">Email*</label>
+                    <input type="email" id="signupEmail" required 
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <div>
+                    <label for="signupContact" class="block text-sm font-medium text-gray-700">Contact Number*</label>
+                    <input type="tel" id="signupContact" required 
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="signupPassword" class="block text-sm font-medium text-gray-700">Password*</label>
+                    <input type="password" id="signupPassword" required minlength="6"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <p class="mt-1 text-xs text-gray-500">Minimum 6 characters</p>
+                </div>
+                
+                <div>
+                    <label for="signupConfirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password*</label>
+                    <input type="password" id="signupConfirmPassword" required 
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label for="signupAge" class="block text-sm font-medium text-gray-700">Age</label>
+                    <input type="number" id="signupAge" min="18" max="100"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <div>
+                    <label for="signupGender" class="block text-sm font-medium text-gray-700">Gender</label>
+                    <select id="signupGender" 
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="signupCnic" class="block text-sm font-medium text-gray-700">CNIC</label>
+                    <input type="text" id="signupCnic" placeholder="XXXXX-XXXXXXX-X"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            
+            <!-- Address Information -->
+            <div class="border-t border-gray-200 pt-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-3">Address Information</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="signupStreet" class="block text-sm font-medium text-gray-700">Street Address</label>
+                        <input type="text" id="signupStreet" 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="signupCity" class="block text-sm font-medium text-gray-700">City</label>
+                        <input type="text" id="signupCity" 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div>
+                        <label for="signupState" class="block text-sm font-medium text-gray-700">State/Province</label>
+                        <input type="text" id="signupState" 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="signupZip" class="block text-sm font-medium text-gray-700">ZIP/Postal Code</label>
+                        <input type="text" id="signupZip" 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="signupCountry" class="block text-sm font-medium text-gray-700">Country</label>
+                        <select id="signupCountry" 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Select Country</option>
+                            <option value="US">United States</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="IN">India</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="CA">Canada</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terms and Conditions -->
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="signupTerms" name="terms" type="checkbox" required
+                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="signupTerms" class="font-medium text-gray-700">I agree to the <a href="#" class="text-blue-600 hover:text-blue-500">Terms and Conditions</a></label>
+                    <p class="text-gray-500">You must agree to the terms to register.</p>
+                </div>
+            </div>
+            
+            <button type="submit" 
+                class="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition font-medium">
+                Complete Registration
+            </button>
+            
+            <p class="text-center text-sm text-gray-600">
+                Already have an account? <a href="login.html" class="text-blue-500 hover:text-blue-600">Login here</a>
+            </p>
+        </form>
+    </div>
+    
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module">
+        import { signUpUser } from './js/auth.js';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signupForm');
+            const signupError = document.getElementById('signupError');
+            
+            // CNIC input formatting
+            const cnicInput = document.getElementById('signupCnic');
+            if (cnicInput) {
+                cnicInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 5) {
+                        value = value.substring(0, 5) + '-' + value.substring(5);
+                    }
+                    if (value.length > 13) {
+                        value = value.substring(0, 13) + '-' + value.substring(13);
+                    }
+                    e.target.value = value.substring(0, 15);
+                });
+            }
+            
+            // Contact number validation
+            const contactInput = document.getElementById('signupContact');
+            if (contactInput) {
+                contactInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').substring(0, 15);
+                });
+            }
+            
+            // Form submission
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Validate password match
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    signupError.textContent = "Passwords do not match!";
+                    signupError.classList.remove('hidden');
+                    return;
+                }
+                
+                // Prepare user data
+                const userData = {
+                    name: document.getElementById('signupName').value,
+                    fatherName: document.getElementById('signupFatherName').value,
+                    email: document.getElementById('signupEmail').value,
+                    contact: document.getElementById('signupContact').value,
+                    age: document.getElementById('signupAge').value,
+                    gender: document.getElementById('signupGender').value,
+                    cnic: document.getElementById('signupCnic').value,
+                    address: {
+                        street: document.getElementById('signupStreet').value,
+                        city: document.getElementById('signupCity').value,
+                        state: document.getElementById('signupState').value,
+                        zip: document.getElementById('signupZip').value,
+                        country: document.getElementById('signupCountry').value
+                    },
+                    createdAt: new Date().toISOString()
+                };
+                
+                try {
+                    await signUpUser(
+                        userData.email, 
+                        password, 
+                        userData
+                    );
+                    window.location.href = 'profile.html';
+                } catch (error) {
+                    signupError.textContent = error.message;
+                    signupError.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

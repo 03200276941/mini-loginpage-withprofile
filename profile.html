@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-semibold">My Complete Profile</h1>
+            <button id="logoutBtn" class="text-red-500 hover:text-red-600">Logout</button>
+        </div>
+    </nav>
+    
+    <div class="max-w-4xl mx-auto p-4">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div id="profileError" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"></div>
+            
+            <!-- View Mode -->
+            <div id="viewMode">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Personal Information Section -->
+                    <div>
+                        <h2 class="text-xl font-bold mb-4 pb-2 border-b">Personal Information</h2>
+                        <div class="space-y-3">
+                            <p><span class="font-medium">Full Name:</span> <span id="profileName"></span></p>
+                            <p><span class="font-medium">Father's Name:</span> <span id="profileFatherName"></span></p>
+                            <p><span class="font-medium">Email:</span> <span id="profileEmail"></span></p>
+                            <p><span class="font-medium">Contact Number:</span> <span id="profileContact"></span></p>
+                            <p><span class="font-medium">Age:</span> <span id="profileAge"></span></p>
+                            <p><span class="font-medium">Gender:</span> <span id="profileGender"></span></p>
+                            <p><span class="font-medium">CNIC:</span> <span id="profileCnic"></span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Address Information Section -->
+                    <div>
+                        <h2 class="text-xl font-bold mb-4 pb-2 border-b">Address Information</h2>
+                        <div class="space-y-3">
+                            <p><span class="font-medium">Street:</span> <span id="profileStreet"></span></p>
+                            <p><span class="font-medium">City:</span> <span id="profileCity"></span></p>
+                            <p><span class="font-medium">State/Province:</span> <span id="profileState"></span></p>
+                            <p><span class="font-medium">ZIP/Postal Code:</span> <span id="profileZip"></span></p>
+                            <p><span class="font-medium">Country:</span> <span id="profileCountry"></span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="editBtn" class="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition">
+                    Edit Profile
+                </button>
+            </div>
+            
+            <!-- Edit Mode -->
+            <form id="editForm" class="hidden space-y-6">
+                <h2 class="text-xl font-bold mb-4 pb-2 border-b">Edit Profile Information</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Personal Information Edit -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Personal Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="editName" class="block text-sm font-medium text-gray-700">Full Name*</label>
+                                <input type="text" id="editName" required 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editFatherName" class="block text-sm font-medium text-gray-700">Father's Name</label>
+                                <input type="text" id="editFatherName" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editContact" class="block text-sm font-medium text-gray-700">Contact Number*</label>
+                                <input type="tel" id="editContact" required 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editAge" class="block text-sm font-medium text-gray-700">Age</label>
+                                <input type="number" id="editAge" min="18" max="100"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editGender" class="block text-sm font-medium text-gray-700">Gender</label>
+                                <select id="editGender" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="editCnic" class="block text-sm font-medium text-gray-700">CNIC</label>
+                                <input type="text" id="editCnic" placeholder="XXXXX-XXXXXXX-X"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Address Information Edit -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Address Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="editStreet" class="block text-sm font-medium text-gray-700">Street Address</label>
+                                <input type="text" id="editStreet" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editCity" class="block text-sm font-medium text-gray-700">City</label>
+                                <input type="text" id="editCity" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editState" class="block text-sm font-medium text-gray-700">State/Province</label>
+                                <input type="text" id="editState" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editZip" class="block text-sm font-medium text-gray-700">ZIP/Postal Code</label>
+                                <input type="text" id="editZip" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="editCountry" class="block text-sm font-medium text-gray-700">Country</label>
+                                <select id="editCountry" 
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="PK">Pakistan</option>
+                                    <option value="IN">India</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3 pt-4">
+                    <button type="submit" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition font-medium">
+                        Save Changes
+                    </button>
+                    <button type="button" id="cancelEditBtn" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded transition font-medium">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { 
+            checkAuthState, 
+            getUserData, 
+            updateUserData,
+            logOutUser
+        } from './js/auth.js';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileError = document.getElementById('profileError');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const editBtn = document.getElementById('editBtn');
+            const cancelEditBtn = document.getElementById('cancelEditBtn');
+            const viewMode = document.getElementById('viewMode');
+            const editForm = document.getElementById('editForm');
+            
+            // Check auth state and load user data
+            checkAuthState(async (user) => {
+                if (!user) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                try {
+                    const userData = await getUserData(user.uid);
+                    if (userData) {
+                        // Display all user information in view mode
+                        displayUserData(user, userData);
+                        
+                        // Set form values for edit mode
+                        setEditFormValues(userData);
+                    }
+                } catch (error) {
+                    showError(error.message);
+                }
+            });
+            
+            // Display all user data
+            function displayUserData(user, userData) {
+                // Personal Info
+                document.getElementById('profileName').textContent = userData.personalInfo?.name || 'Not provided';
+                document.getElementById('profileFatherName').textContent = userData.personalInfo?.fatherName || 'Not provided';
+                document.getElementById('profileEmail').textContent = user.email;
+                document.getElementById('profileContact').textContent = userData.personalInfo?.contact || 'Not provided';
+                document.getElementById('profileAge').textContent = userData.personalInfo?.age || 'Not provided';
+                document.getElementById('profileGender').textContent = userData.personalInfo?.gender || 'Not provided';
+                document.getElementById('profileCnic').textContent = userData.personalInfo?.cnic || 'Not provided';
+                
+                // Address Info
+                document.getElementById('profileStreet').textContent = userData.address?.street || 'Not provided';
+                document.getElementById('profileCity').textContent = userData.address?.city || 'Not provided';
+                document.getElementById('profileState').textContent = userData.address?.state || 'Not provided';
+                document.getElementById('profileZip').textContent = userData.address?.zip || 'Not provided';
+                document.getElementById('profileCountry').textContent = getCountryName(userData.address?.country) || 'Not provided';
+            }
+            
+            // Set edit form values
+            function setEditFormValues(userData) {
+                // Personal Info
+                document.getElementById('editName').value = userData.personalInfo?.name || '';
+                document.getElementById('editFatherName').value = userData.personalInfo?.fatherName || '';
+                document.getElementById('editContact').value = userData.personalInfo?.contact || '';
+                document.getElementById('editAge').value = userData.personalInfo?.age || '';
+                document.getElementById('editGender').value = userData.personalInfo?.gender || '';
+                document.getElementById('editCnic').value = userData.personalInfo?.cnic || '';
+                
+                // Address Info
+                document.getElementById('editStreet').value = userData.address?.street || '';
+                document.getElementById('editCity').value = userData.address?.city || '';
+                document.getElementById('editState').value = userData.address?.state || '';
+                document.getElementById('editZip').value = userData.address?.zip || '';
+                document.getElementById('editCountry').value = userData.address?.country || '';
+            }
+            
+            // Get country name from code
+            function getCountryName(code) {
+                const countries = {
+                    'US': 'United States',
+                    'PK': 'Pakistan',
+                    'IN': 'India',
+                    'UK': 'United Kingdom',
+                    'CA': 'Canada'
+                };
+                return countries[code] || code;
+            }
+            
+            // Show error message
+            function showError(message) {
+                profileError.textContent = message;
+                profileError.classList.remove('hidden');
+                setTimeout(() => profileError.classList.add('hidden'), 5000);
+            }
+            
+            // Logout button
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    await logOutUser();
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    showError(error.message);
+                }
+            });
+            
+            // Edit button
+            editBtn.addEventListener('click', () => {
+                viewMode.classList.add('hidden');
+                editForm.classList.remove('hidden');
+            });
+            
+            // Cancel edit button
+            cancelEditBtn.addEventListener('click', () => {
+                viewMode.classList.remove('hidden');
+                editForm.classList.add('hidden');
+            });
+            
+            // Edit form submission
+            editForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                try {
+                    const user = auth.currentUser;
+                    const newData = {
+                        personalInfo: {
+                            name: document.getElementById('editName').value,
+                            fatherName: document.getElementById('editFatherName').value,
+                            contact: document.getElementById('editContact').value,
+                            age: document.getElementById('editAge').value,
+                            gender: document.getElementById('editGender').value,
+                            cnic: document.getElementById('editCnic').value
+                        },
+                        address: {
+                            street: document.getElementById('editStreet').value,
+                            city: document.getElementById('editCity').value,
+                            state: document.getElementById('editState').value,
+                            zip: document.getElementById('editZip').value,
+                            country: document.getElementById('editCountry').value
+                        }
+                    }
+                    
+                    await updateUserData(user.uid, newData);
+                    
+                    // Refresh the displayed data
+                    const userData = await getUserData(user.uid);
+                    displayUserData(user, userData);
+                    
+                    viewMode.classList.remove('hidden');
+                    editForm.classList.add('hidden');
+                } catch (error) {
+                    showError(error.message);
+                }
+            });
+            
+            // CNIC input formatting
+            const cnicInput = document.getElementById('editCnic');
+            if (cnicInput) {
+                cnicInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 5) {
+                        value = value.substring(0, 5) + '-' + value.substring(5);
+                    }
+                    if (value.length > 13) {
+                        value = value.substring(0, 13) + '-' + value.substring(13);
+                    }
+                    e.target.value = value.substring(0, 15);
+                });
+            }
+        });
+        // In your profile page JavaScript:
+checkAuthState(async (user) => {
+    if (!user) {
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    try {
+        const snapshot = await get(ref(database, `users/${user.uid}`));
+        if (snapshot.exists()) {
+            const userData = snapshot.val();
+            
+            // Debug: log the retrieved data
+            console.log("Retrieved user data:", userData);
+            
+            // Update the display
+            document.getElementById('profileName').textContent = 
+                userData.personalInfo?.name || 'Not provided';
+            document.getElementById('profileFatherName').textContent = 
+                userData.personalInfo?.fatherName || 'Not provided';
+            // ... and so on for all other fields
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+    }
+});
+// In your profile page JavaScript:
+checkAuthState(async (user) => {
+    if (!user) {
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    try {
+        const snapshot = await get(ref(database, `users/${user.uid}`));
+        if (snapshot.exists()) {
+            const userData = snapshot.val();
+            
+            // Debug: log the retrieved data
+            console.log("Retrieved user data:", userData);
+            
+            // Update the display
+            document.getElementById('profileName').textContent = 
+                userData.personalInfo?.name || 'Not provided';
+            document.getElementById('profileFatherName').textContent = 
+                userData.personalInfo?.fatherName || 'Not provided';
+            // ... and so on for all other fields
+        }
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+    }
+});
+    </script>
+</body>
+</html>
